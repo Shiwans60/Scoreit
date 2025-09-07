@@ -19,9 +19,8 @@ public class Quizcontroller {
     @Autowired
     private QuizServices quizServices;
     @PostMapping("/create")
-    public ResponseEntity<String> createquiz(@RequestBody Quizreq quizreq){ // to visit manage this dto
+    public ResponseEntity<String> createquiz(@RequestBody Quizreq quizreq){           // to visit this dto
         return quizServices.Createquiz(quizreq.getCategory(),quizreq.getTitle(), quizreq.getNumQ());
-
     }
     @GetMapping("getquiz/{id}")
     public ResponseEntity<List<Questionwrapper>> getquizquestions(@PathVariable String id){

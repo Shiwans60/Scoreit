@@ -3,9 +3,6 @@ package com.quizapp.Quizzing.Models;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.repository.MongoRepository;
-
-import java.util.Collection;
 
 @Getter
 @Setter
@@ -16,7 +13,7 @@ import java.util.Collection;
 public class QuestionModel {
     @Id
     private Integer id;
-    private String title;
+    private String Title;
     private String option1;
     private String option2;
     private String option3;

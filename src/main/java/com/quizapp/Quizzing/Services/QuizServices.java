@@ -40,6 +40,7 @@ public class QuizServices {
         }
         return new ResponseEntity<>(questionforusr, HttpStatus.OK);
     }
+
     public ResponseEntity<Integer> calculateresult(String id, List<Responsemodel> responses){
         QuizModel quiz = quizrepo.findById(id).get();
         List<QuestionModel> questions = quiz.getQuestions();
@@ -53,6 +54,14 @@ public class QuizServices {
         }
         return new ResponseEntity<>(right,HttpStatus.OK);
 
+    }
+    public QuizModel findbytitle(String title){
+        Optional<QuizModel> quiz = quizrepo.findBytitle(title);
+        if (quiz.isPresent()) {
+            return quiz.get();
+        } else {
+            throw new RuntimeException("Quiz not found with title: " + title);
+        }
     }
 
 }

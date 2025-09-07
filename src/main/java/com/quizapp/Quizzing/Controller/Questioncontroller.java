@@ -14,9 +14,11 @@ public class Questioncontroller {
     @Autowired
     private Questionservice questionservice;
 
-    @PostMapping("/addquestions")
-    public ResponseEntity<String> putquestions(@RequestBody QuestionModel questions){
-        return questionservice.addquestion(questions);
+    @PostMapping("/addquestions/{title}/{Category}/{numQ}")
+    public ResponseEntity<String> putquestions(@RequestBody QuestionModel questions,@PathVariable("title") String title,
+                                               @PathVariable("Category") String Category,
+                                               @PathVariable("numQ") Integer numQ){
+        return questionservice.addquestion(questions,title,Category,numQ);
     }
     @GetMapping("/getallquestions")
     public ResponseEntity<List<QuestionModel>> getallquestions(){
@@ -28,6 +30,4 @@ public class Questioncontroller {
         ResponseEntity<List<QuestionModel>> getting = questionservice.getallquestionsbycategory(category);
         return getting;
     }
-
-
 }
